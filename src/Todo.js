@@ -1,9 +1,18 @@
 import React from 'react';
+import './style.css'
 
-const Todo = () => {
+const Todo = ({ id, name, completed }) => {
     return (
-        <div>
-            <h2>Hello Todo</h2>
+        <div className='innercontainer'>
+            
+            <h2>
+            <span className='spanid'>{id}</span>
+                {name}
+
+                {console.log(completed)}
+                {/* <span className='spanclass'>{completed}</span> */}
+
+            </h2>
         </div>
     );
 };
