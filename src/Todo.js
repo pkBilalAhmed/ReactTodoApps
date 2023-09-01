@@ -1,18 +1,17 @@
 import React from 'react';
 import './style.css'
 
-const Todo = ({ id, name, completed }) => {
+const Todo = ({ id, name, completed, deleteTodo }) => {
     return (
         <div className='innercontainer'>
-            
-            <h2>
-            <span className='spanid'>{id}</span>
-                {name}
 
-                {console.log(completed)}
-                {/* <span className='spanclass'>{completed}</span> */}
+            <div>{name}
+                {/* <button >{completed ? 'Done' : "Do"}</button> */}
+                <button onClick={deleteTodo}>Delete Todo</button>
+            </div>
 
-            </h2>
+
+
         </div>
     );
 };
