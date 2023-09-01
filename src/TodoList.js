@@ -25,13 +25,23 @@ const TodoList = () => {
         const updatedTodos = todos.filter((item) => { return item.id !== i })
         setTodos(updatedTodos)
     }
+    const isComplete = (i) => {
+        const updatedTodos = todos.map((item) =>
+            item.id === i ? { ...item, completed: !item.completed } : item)
+        setTodos(updatedTodos)
+        // console.log(todos[i].completed);
+    }
     return (
         <div className='container'>
             <input type='text' value={newValue} onChange={changeVal} />
             <button onClick={addTodo}>Add Todo</button>
             {
                 todos.map((todo) => (
-                    <Todo id={todo.id} name={todo.name} completed={todo.completed} key={todo.id} deleteTodo={() => deleteTodo(todo.id)} />
+                    <Todo name={todo.name}
+                        isCompleted={() => { isComplete(todo.id) }}
+                        completed={todo.completed}
+                        key={todo.id}
+                        deleteTodo={() => deleteTodo(todo.id)} />
                 ))
             }
         </div>
