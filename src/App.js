@@ -1,9 +1,10 @@
 import React from "react";
-import Tasklist from "./Tasklist";
+// import Tasklist from "./Tasklist";
+import TodoList from "./TodoList";
 
 const App = () => {
   return <div>
-    <Tasklist />
+    <TodoList/>
   </div>;
 };
 
