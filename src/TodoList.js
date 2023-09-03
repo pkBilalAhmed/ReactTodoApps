@@ -17,8 +17,23 @@ const TodoList = () => {
             setInputValue('')
             console.log(todoList);
         }
+
     }
-    const isCompleteFun=()=>{}
+    function checkTodo() {
+        // const updatedTodoList = todoList.map((item) => console.log(item.completed))
+        console.log(todoList.map((item) => console.log(item.completed)))
+        // setTodoList(updatedTodoList)
+    }
+    const isCompleteFun = (id) => {
+        const updatedTodoList = todoList.map((item) => {
+            return item.id === id ? { ...item, completed: !item.completed } : item
+        })
+        setTodoList(updatedTodoList)
+    }
+    const deleteItem = (i) => {
+        const updatedTodoList = todoList.filter((item) => item.id !== i)
+        setTodoList(updatedTodoList)
+    }
     return (
         <div className='container'>
             <div className='subContainer'>
@@ -26,10 +41,13 @@ const TodoList = () => {
                 <button onClick={addTodo}>Add Todo</button>
             </div>
             <div className='subContianer2'>
+                <button onClick={checkTodo}>checkTodo</button>
                 {
-                    todoList.map((item) => (
-                        <Todo key={item.id} name={item.name} isCompleteFun={isCompleteFun}/>
-                    ))
+                    todoList.map((item) =>
+                        <Todo key={item.id} name={item.name} isCompleteFun={() =>
+                            isCompleteFun(item.id)} completed={item.completed} deleteItem={() => deleteItem(item.id)} />
+                    )
+
                 }
             </div>
         </div>
