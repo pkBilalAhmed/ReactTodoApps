@@ -12,16 +12,25 @@ const TodoList = () => {
 
     const addTodo = () => {
         if (inputValue.trim()) {
+            // const data = { name: inputValue, id: todoList.length + 1, completed: false }
+            // const data = todoList.concat({ name: inputValue, id: todoList.length + 1, completed: false })
+            // setTodoList(data)
+            // todoList.push({name: inputValue, id: todoList.length + 1, completed: false})// if you set 
+            //the push method at todoList State its working fine wihout updating state in setTodoList state updating method
+            // const upDatedList = [...todoList, {name: inputValue, id: todoList.length + 1, completed: false}]
+            // setTodoList(upDatedList)
+            // todoList.unshift({ name: inputValue, id: todoList.length + 1, completed: false })
             const data = { name: inputValue, id: todoList.length + 1, completed: false }
-            setTodoList([...todoList, data])
+            todoList.splice(todoList.length, 0, data)
+            // setTodoList()
             setInputValue('')
-            console.log(todoList);
+            // console.log(todoList);
         }
 
     }
     function checkTodo() {
         // const updatedTodoList = todoList.map((item) => console.log(item.completed))
-        console.log(todoList.map((item) => console.log(item.completed)))
+        console.log(todoList.map((item) => console.log(item.completed + " Hello" + item.id)))
         // setTodoList(updatedTodoList)
     }
     const isCompleteFun = (id) => {
@@ -45,7 +54,7 @@ const TodoList = () => {
                 {
                     todoList.map((item) =>
                         <Todo key={item.id} name={item.name} isCompleteFun={() =>
-                            isCompleteFun(item.id)} completed={item.completed} deleteItem={() => deleteItem(item.id)} />
+                            isCompleteFun(item.id)} completed={item.completed} deleteItem={() => deleteItem(item.id)} item={item} />
                     )
 
                 }
